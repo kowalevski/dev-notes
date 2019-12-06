@@ -32,3 +32,21 @@ Basically you should use data from different source in tests. Because if you wil
 
 - You should never refactor or rework your code while you are in **red** test
 
+A good test should:
+- execute production code
+- set up dependencies for tests
+- check what is the result as the same as expectations
+- be short
+- have clear description
+- be independent of other tests
+- be without side-effects
+
+**Basic TDD concepts**
+
+*Red, Green, Refactor*
+
+TDD cycle of writing tests has required parts:
+- Red tests: write a failing test
+- Green tests: make code that pass tests
+- Refactor code and also tests for that code
+
