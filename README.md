@@ -11,4 +11,5 @@ This repository is collection of notes about things which I learn. Languages, fr
 - [React](react/)
 - [Rx](rx/)
 - [Front End](frontend/)
+- [JavaScript](javascript/)
 
