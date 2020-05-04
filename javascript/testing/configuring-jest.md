@@ -2,6 +2,8 @@
 
 ## Imports in a babel's project
 
+> Full example of configuration you can see in the project [Lotto Game](https://github.com/kowalevski/lotto-game)
+
 Install Jest as dev dependency:
 
 ```
@@ -42,6 +44,8 @@ module.exports = {
 ```
 
 ## Using module's aliases (absolute paths) in Jest tests
+
+> Full example of configuration you can see in the project [Lotto Game](https://github.com/kowalevski/lotto-game)
 
 If you are using webpack in your project, you can use absolute paths in your project. In webpack's configuration file it will be something like that:
 
