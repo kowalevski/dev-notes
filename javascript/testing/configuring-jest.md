@@ -1,0 +1,86 @@
+# Configuring Jest In JS/TS Project
+
+## Imports in a babel's project
+
+Install Jest as dev dependency:
+
+```
+npm i --save-dev jest
+```
+
+> for correct work of autocomplete in VSCode you should install types for Jest even if you work with no TypeScript project
+
+```
+npm i --save-dev @types/jest
+```
+
+If you are using **babel** in your project, you should pay attention with a configuration of babel, especially option for [Tree Shaking](https://webpack.js.org/guides/tree-shaking/) which disables imports in a code:
+
+```js
+// ...
+    ['@babel/preset-env', { modules: false }],
+// ...
+```
+
+When imports are disabled in a code, Jest can't parse them in tests - so you can catch errors like:
+
+```
+    SyntaxError: Cannot use import statement outside a module
+```
+
+Therefore, you should check env mode "test" in **babelrc** file:
+
+```js
+const isTestMode = process.env.NODE_ENV === 'test';
+
+module.exports = {
+  presets: [
+    ['@babel/preset-env', { modules: isTestMode ? 'commonjs' : false }],
+    '@babel/preset-react'
+  ],
+// ...
+```
+
+## Using module's aliases (absolute paths) in Jest tests
+
+If you are using webpack in your project, you can use absolute paths in your project. In webpack's configuration file it will be something like that:
+
+```js
+//...
+module.exports = {
+  resolve: {
+    modules: ['node_modules', path.join(__dirname, 'src'), 'components'],
+// ...
+```
+
+It means that you can write absolute paths like:
+
+```js
+import Gamefield from "Gamefield";
+```
+
+Instead of
+
+```js
+import Gamefield from "../../../components/Gamefield";
+```
+
+But by default Jest doesn't know about this absolute paths. So, if you use absolute paths in your Jest's tests you will get error:
+
+```
+Cannot find module 'Gamefield' from 'Gamefield.test.jsx'
+...
+You might want to include a file extension in your import, or update your 'moduleFileExtensions', which is currently ['js', 'json', 'jsx', 'ts', 'tsx', 'node'].
+```
+
+You should add option "moduleDirectories" in your Jest's configuration file:
+
+```js
+module.exports = {
+  moduleDirectories: [
+    "node_modules",
+    path.join(__dirname, "src"),
+    "components",
+  ],
+};
+```
