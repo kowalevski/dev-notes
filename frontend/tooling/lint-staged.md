@@ -36,3 +36,18 @@ You should already have **husky** in your project for running git actions. Now w
 }
 ```
 
+### Running Jest git staged tests
+
+If you're using **Jest** for testing your application, you can also run all git staged test files by **lint-staged**. For this you need to add a line "jest --findRelatedTests" in lint-staged configuration file:
+
+```js
+module.exports = {
+  'src/**/*.+(js|jsx|json)': ['eslint'],
+  '**/*.+(js|jsx|json|css|html|md)': [
+    'prettier --write',
+    'jest --findRelatedTests',
+    'git add'
+  ]
+};
+```
+
