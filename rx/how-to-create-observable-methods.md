@@ -1,4 +1,4 @@
-## Main methods that creates Observables
+## How to create Observable (methods)
 
 ```javascript
 import { from, of, fromEvent } from "rxjs";

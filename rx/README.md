@@ -6,7 +6,7 @@
 
 My experience of Rx based on using JavaScript library [RxJS](https://rxjs-dev.firebaseapp.com/)
 
-- [Basics concepts (Observable, Subscription, Observers)](basics/)
-- [Pipe and Operators](pipe-and-operators/)
-- [Main methods that creates Observables](main-observable-creators/)
+- [Basic Concepts](basic-concepts.md)
+- [How to create Observable (methods)](how-to-create-observable-methods.md)
+- [Pipes and operators](pipes-and-operators.md)
 
